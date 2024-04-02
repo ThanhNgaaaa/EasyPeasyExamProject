@@ -1,0 +1,72 @@
+@import "normalize.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400&family=Work+Sans:wght@500&display=swap");
+
+:root {
+  --primary-text: #000;
+  --primary-color: #8a63f5;
+  --second-color: #F9F9FF;
+  --color-border: #e6e3f1;
+  --line-height: 1.4rem;
+  --color-black: #000;
+  --white-color: #fff;
+  --pink-color:#FDCEDF;
+  --blue-color:#AEE2FF;
+  --pink-color:#e980c1;
+  --color-body: #6b7385;
+  --primary-gradient:#5675f1;
+  --second-gradient:#d08bf5;
+  --hover-gray-color: #f5f5f5;
+  --font-family: "Work Sans", sans-serif;
+  --shadow-1: 0px 6px 34px rgba(215, 216, 222, 0.41);
+  --gradient-color: linear-gradient(90deg, #2f57ef, #b966e7);
+  --border-gradient-color: linear-gradient(-145deg, #cfa2e8, #637fea);
+  --border-radius: 6px;
+}
+html {
+  font-size: 62.5%; //#D14D72;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-family);
+  font-size: 1.6rem;
+  text-rendering: optimizeSpeed;
+  overflow-y: scroll;
+}
+.row {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+button,
+input,
+[tabindex] {
+  outline: none;
+  border: none;
+}
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--primary-color) #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  // background-color: var(--primary-color);
+  background: var(--gradient-color);
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}

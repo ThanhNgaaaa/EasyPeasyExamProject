@@ -1,0 +1,37 @@
+.navbar-list{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+.navbar-list li:first-child a{
+    padding-left: 0;
+}
+@media only screen and (min-width: 1200px) and (max-width:1599px){
+    .navbar-list>li>a{
+        padding: 0 10px;
+    }
+}
+.navbar-list>li>a{
+    text-decoration:none;
+    color: var(--primary-text);
+    font-size: 16px;
+    height: 80px;
+    line-height: 80px;
+    transition:0.3s;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+}
+.navbar-list>li>a .icon_chevrondown{
+    transition:0.3s;
+
+}
+.navbar-list>li:hover> a{
+    color:var(--primary-color);
+}
+.navbar-list>li:hover> a .icon_chevrondown{
+    transform: rotate(180deg);
+    margin-top: 2px;
+}
+

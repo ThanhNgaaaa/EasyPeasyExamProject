@@ -1,0 +1,12 @@
+export { default as Contact } from "./Contact/Contact";
+export { default as Course } from "./Courses/Course";
+export { default as Home } from "./Home/Home";
+export { default as Login } from "./Login/Login";
+export { default as Profile } from "./Profile/Profile";
+export { default as Quiz } from "./Quizzes/Quizzes";
+export { default as EnrolledCourses } from "./EnrolledCourses/EnrolledCourses";
+export { default as CoursesIns } from "./CoursesIns/CoursesIns";
+export { default as QuizzesIns } from "./QuizzesIns/QuizzesIns";
+export { default as CourseDetail } from "./CourseDetail/CourseDetail";
+export { default as Lesson } from "./LessonDetail/LessonDetail";
+export { default as QuizGame } from "./QuizGame/QuizGame";

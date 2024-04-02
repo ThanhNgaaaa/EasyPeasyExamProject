@@ -1,0 +1,35 @@
+.wrapper {
+  h3 {
+    margin-left: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(230, 227, 241, 0.3098039216);
+  }
+}
+.section-title {
+  h4 {
+    margin-bottom: 24px;
+    font-size: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e6e3f14f;
+  }
+}
+.profile {
+  display: flex;
+  margin: 15px 0;
+  color: var(--color-body);
+  width: 100%;
+  .profile-title {
+    width: calc(100% / 3);
+    padding: 0 15px;
+  }
+  .profile-content {
+    width: calc(100% / 9);
+  }
+}
+.password {
+  position: relative;
+}
+.eye-icon-wrapper {
+  position: absolute;
+  right: 80px;
+}

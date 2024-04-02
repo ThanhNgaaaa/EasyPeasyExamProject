@@ -1,0 +1,138 @@
+// .wrapper {
+//   width: 100%;
+//   h3 {
+//     margin-left: 20px;
+//     padding-bottom: 10px;
+//     border-bottom: 1px solid rgba(230, 227, 241, 0.3098039216);
+//   }
+// }
+// .box {
+//   margin-top: 15px;
+// }
+// .container {
+//   display: flex;
+//   width: 100%;
+//   justify-content: space-between;
+//   margin-top: 20px;
+// }
+// .col-3 {
+//   width: calc(100% / 3);
+//   padding: 20px;
+// }
+// .inner {
+//   box-shadow: var(--shadow-1);
+//   border-radius: 5px;
+//   text-align: center;
+//   padding: 10px 30px 50px;
+//   z-index: 1;
+//   overflow: hidden;
+//   position: relative;
+// }
+// .blue {
+//   background-color: #9db3fc;
+// }
+// .purple {
+//   background-color: #e1a2f0;
+// }
+// .link {
+//   text-decoration: none;
+//   cursor: pointer;
+//   padding: 0 20px;
+// }
+// .round-icon {
+//   width: 100px;
+//   margin: 0 auto;
+//   height: 100px;
+//   line-height: 100px;
+//   padding: 25px;
+//   border-radius: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   box-shadow: 0 13px 14px 0 rgba(129, 104, 145, 0.05);
+// }
+// .content {
+//   margin-top: 25px;
+// }
+// .counter {
+//   margin-bottom: 15px;
+// }
+// .title {
+//   font-size: 12px;
+//   font-weight: 600;
+//   text-transform: uppercase;
+//   letter-spacing: 0.5px;
+//   opacity: 0.6;
+//   margin-bottom: 0;
+// }
+.wrapper {
+  width: 100%;
+  h3 {
+    margin-left: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(230, 227, 241, 0.3098039216);
+  }
+}
+.box {
+  margin-top: 15px;
+}
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.col-2 {
+  width: calc(100% / 2);
+  padding: 20px;
+}
+.inner {
+  box-shadow: var(--shadow-1);
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 30px 50px;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+}
+.blue {
+  background-color: #9db3fc;
+}
+.pink{
+  background-color: #FFD6EC;
+}
+.purple {
+  background-color: #e1a2f0;
+}
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0 20px;
+}
+.round-icon {
+  width: 100px;
+  margin: 0 auto;
+  height: 100px;
+  line-height: 100px;
+  padding: 25px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 13px 14px 0 rgba(129, 104, 145, 0.05);
+  background-color: #fff;
+}
+.content {
+  margin-top: 25px;
+}
+.counter {
+  margin-bottom: 15px;
+}
+.title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.6;
+  margin-bottom: 0;
+}

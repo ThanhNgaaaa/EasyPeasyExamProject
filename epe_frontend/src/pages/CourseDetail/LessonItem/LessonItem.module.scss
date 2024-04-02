@@ -1,0 +1,24 @@
+.lesson-item {
+  background: transparent;
+  border-radius: 0 !important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+}
+.lesson-header {
+  border-bottom: 1px solid #e6e3f1;
+  padding: 0px 20px 20px 0;
+  font-size: 18px;
+  color: var(--color-primary);
+}
+.lesson-content{
+    padding: 20px 20px 20px 0;
+    border-top: 0;
+    background: transparent;
+}
+.lesson-icon {
+    transform: translateY(3px);
+    margin-right: 6px;
+  }

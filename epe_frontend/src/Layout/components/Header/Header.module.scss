@@ -1,0 +1,118 @@
+.wrapper {
+  height: 80px;
+  box-shadow: 0px 1px 1px rgba(0 0 0 /12%);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation: stickySlideDown 0.65s cubic-bezier(0.23, 1, 0.32, 1) both;
+  z-index: 99;
+  box-shadow: var(--shadow-1);
+  background-color: #000;
+}
+@keyframes stickySlideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.header {
+  position: relative;
+}
+.header-transparent {
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: transparent;
+  backdrop-filter: inherit;
+  box-shadow: none;
+  z-index: 99;
+  transition: background-color 0.3s ease-in-out;
+}
+.scrolled {
+  background-color: #fff !important;
+  input{
+    box-shadow: var(--shadow-1);
+  }
+}
+.inner {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 1;
+}
+.logo_image {
+  object-fit: cover;
+}
+.header-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-account {
+  padding-right: -6px;
+}
+
+//login
+.header_login {
+  border: 1px solid var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #000;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.header_login-icon {
+  font-size: 18px;
+  margin-right: 6px;
+}
+.current-user {
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+  // width: 200px;
+  overflow: hidden;
+  &:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+}
+.user-name {
+  padding: 0 8px;
+  margin-bottom: -3px;
+  font-weight: 500;
+  width: 120px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-menu-list {
+  width: 170px !important;
+}
+//Menu
+.menu-transition[data-state="visible"] {
+  visibility: visible;
+  opacity: 1;
+  clip: rect(0px, 100vw, 200vh, -30px);
+  transition: clip 0.6s linear, opacity 0.4s linear;
+}

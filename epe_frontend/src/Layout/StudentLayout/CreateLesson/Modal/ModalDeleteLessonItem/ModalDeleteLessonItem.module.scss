@@ -1,0 +1,122 @@
+.overlay {
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+  .modalContainer {
+    max-width: 400px;
+    width: 100%;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 8px;
+    flex-direction: column;
+  }
+  .closeBtn {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    padding: 10px;
+    &:hover {
+      cursor: pointer;
+      color: red;
+    }
+  }
+  .modalContent {
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 3rem 0;
+    padding: 1rem 2rem;
+    width: 100%;
+    flex-direction: column;
+  }
+  .modalsubHeader{
+    margin-bottom: 16px;
+  }
+  .btnContainer {
+    display: flex;
+    // padding: 1rem 1rem;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 0px !important;
+    :nth-child(n+2){
+        margin-top: 0;
+    }
+  }
+  .btnContainer button {
+    width: 50% !important;
+    padding: 10px 0;
+    &:hover{
+        cursor: pointer;
+    }
+  }
+  .bold {
+    font-weight: 200;
+    margin-top: 6px;
+  }
+  @media screen and (max-width: 500px) {
+    .modalContainer {
+      flex-direction: column;
+      top: 0;
+      left: 0;
+      transform: none;
+      width: 100%;
+      height: 100vh;
+    }
+    .heading {
+      margin: 1rem;
+    }
+  }
+  .btnCancel {
+    width: 80px;
+    background: #FE0000;
+    color: #fff;
+    border: 1px solid #d0a2f7;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    transition: all 0.3s ease 0s;
+    margin-left: 10px;
+    .btn_img {
+      width: 40px;
+    }
+    &:hover {
+      background: #FE0000;
+      color: #fff;
+      border-color: #FE0000;
+      transform: translateY(-4px);
+      box-shadow: 0px 15px 20px rgba(253, 40, 40, 0.4);
+    }
+  }
+  .btnOk {
+    width: 50%;
+    text-decoration: none;
+    background: #d0a2f7;
+    color: #fff;
+    border: 1px solid #d0a2f7;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease 0s;
+    font-weight: 400;
+    margin-right: 10px;
+    &:hover {
+      background: #d0a2f7;
+      color: #fff;
+      border-color: #d0a2f7;
+      transform: translateY(-4px);
+      box-shadow: 0px 15px 20px rgba(214, 46, 229, 0.4);
+    }
+  }
+  
