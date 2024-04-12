@@ -1,5 +1,6 @@
 ﻿using EasyPeasyExam.Dto;
 using EasyPeasyExam.Models;
+using EasyPeasyExam.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,54 +12,61 @@ namespace EasyPeasyExam.Controllers
     public class QuizController : ControllerBase
     {
         private readonly EasyPeasyExamContext _context;
+        private readonly ICacheService _cacheService;
 
-        public QuizController(EasyPeasyExamContext context)
+
+        public QuizController(EasyPeasyExamContext context, ICacheService cacheService)
         {
             _context = context;
+            _cacheService = cacheService;
         }
-        // GET: api/Questions
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<Choice>>> GetChoice()
-        //{
-        //    if (_context.Choices == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return await _context.Choices.ToListAsync();
-        //}
 
-        //// GET: quiz/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Choice>> GetChoice(int id)
-        //{
-        //    if (_context.Choices == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var choice = await _context.Choices.FindAsync(id);
-
-        //    if (choice == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return choice;
-        //}
         [HttpGet("{id}")]
         public async Task<ActionResult<Exam>> GetExam(int id)
         {
+            var cacheQuiz = _cacheService.GetData<IEnumerable<Exam>>("exams");
+            if (cacheQuiz != null && cacheQuiz.Count() > 0)
+            {
+                return Ok(cacheQuiz);
+            }
             var exam = await _context.Exams
                 .Include(e => e.Questions)
                     .ThenInclude(q => q.Choices)
                 .FirstOrDefaultAsync(e => e.ExamId == id);
+            var expiryTime = DateTimeOffset.Now.AddMinutes(10);
+            _cacheService.SetData<IEnumerable<Exam>>("exams", new List<Exam> { exam }, expiryTime);
 
             if (exam == null)
             {
                 return NotFound();
             }
 
-            return exam;
+            return Ok(exam);
         }
+        //[HttpGet("{id}")]
+
+
+        //public async Task<ActionResult<Exam>> GetExam(int id)
+        //{
+        //    //var cacheQuiz = _cacheService.GetData<IEnumerable<Exam>>("exams");
+        //    //if (cacheQuiz != null && cacheQuiz.Count() > 0)
+        //    //{
+        //    //    return Ok(cacheQuiz);
+        //    //}
+        //    var exam = await _context.Exams
+        //        .Include(e => e.Questions)
+        //            .ThenInclude(q => q.Choices)
+        //        .FirstOrDefaultAsync(e => e.ExamId == id);
+        //    //var expiryTime = DateTimeOffset.Now.AddMinutes(10);
+        //    //_cacheService.SetData<IEnumerable<Exam>>("exams", new List<Exam> { exam }, expiryTime);
+
+        //    if (exam == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return exam;
+        //}
         //// PUT: api/Quiz/5
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

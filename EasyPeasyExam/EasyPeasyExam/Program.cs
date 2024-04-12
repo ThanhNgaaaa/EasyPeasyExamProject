@@ -1,4 +1,5 @@
 ﻿using EasyPeasyExam.Models;
+using EasyPeasyExam.Services;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Cors;
@@ -23,6 +24,8 @@ builder.Services.AddControllers(options => options.SuppressImplicitRequiredAttri
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<ICacheService, CacheService>();
 
 //Dependency Injection Connection Database
 //builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));

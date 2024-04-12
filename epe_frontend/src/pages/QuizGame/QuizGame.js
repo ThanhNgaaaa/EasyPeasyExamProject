@@ -21,9 +21,9 @@ const QuizGame = () => {
     axios
       .get(`https://localhost:7121/api/Quiz/${ExamId}`)
       .then((response) => {
-        setExam(response.data);
-        setTimeLeft(response.data.Duration);
-        console.log(response.data);
+        setExam(response.data[0]);
+        setTimeLeft(response.data[0].Duration);
+        console.log(response.data[0]);
       })
       .catch((error) => {
         console.error(error);
