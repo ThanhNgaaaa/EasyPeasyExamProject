@@ -1,5 +1,6 @@
 ﻿using EasyPeasyExam.Dto;
 using EasyPeasyExam.Models;
+using EasyPeasyExam.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +12,11 @@ namespace EasyPeasyExam.Controllers
     public class QuizController : ControllerBase
     {
         private readonly EasyPeasyExamContext _context;
-
-        public QuizController(EasyPeasyExamContext context)
+        private readonly ICacheService _cacheService;
+        public QuizController(EasyPeasyExamContext context, ICacheService cacheService)
         {
             _context = context;
+            _cacheService = cacheService;
         }
         // GET: api/Questions
         //[HttpGet]
@@ -47,17 +49,24 @@ namespace EasyPeasyExam.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Exam>> GetExam(int id)
         {
+            var cacheQuiz = _cacheService.GetData<IEnumerable<Exam>>("exams");
+            if (cacheQuiz != null && cacheQuiz.Count() > 0)
+            {
+                return Ok(cacheQuiz);
+            }
             var exam = await _context.Exams
                 .Include(e => e.Questions)
                     .ThenInclude(q => q.Choices)
                 .FirstOrDefaultAsync(e => e.ExamId == id);
+            var expiryTime = DateTimeOffset.Now.AddMinutes(10);
+            _cacheService.SetData<IEnumerable<Exam>>("exams", new List<Exam> { exam }, expiryTime);
 
             if (exam == null)
             {
                 return NotFound();
             }
 
-            return exam;
+            return Ok(exam);
         }
         //// PUT: api/Quiz/5
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
