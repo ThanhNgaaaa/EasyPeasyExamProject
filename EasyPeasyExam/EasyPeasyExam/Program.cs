@@ -24,9 +24,7 @@ builder.Services.AddControllers(options => options.SuppressImplicitRequiredAttri
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 builder.Services.AddScoped<ICacheService, CacheService>();
-
 //Dependency Injection Connection Database
 //builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
 builder.Services.AddDbContext<EasyPeasyExamContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

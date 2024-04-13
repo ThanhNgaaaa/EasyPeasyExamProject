@@ -14,15 +14,14 @@ namespace EasyPeasyExam.Controllers
         private readonly EasyPeasyExamContext _context;
         private readonly ICacheService _cacheService;
 
-
         public QuizController(EasyPeasyExamContext context, ICacheService cacheService)
         {
             _context = context;
             _cacheService = cacheService;
         }
-
+        
         [HttpGet("{id}")]
-        public async Task<ActionResult<Exam>> GetExam(int id)
+         public async Task<ActionResult<Exam>> GetExam(int id)
         {
             var cacheQuiz = _cacheService.GetData<IEnumerable<Exam>>("exams");
             if (cacheQuiz != null && cacheQuiz.Count() > 0)

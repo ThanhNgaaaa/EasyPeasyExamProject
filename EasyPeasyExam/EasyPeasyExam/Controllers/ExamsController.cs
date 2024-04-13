@@ -18,11 +18,10 @@ namespace EasyPeasyExam.Controllers
         private readonly EasyPeasyExamContext _context;
         private readonly IWebHostEnvironment _environment;
         private readonly ICacheService _cacheService;
-
         public ExamsController(EasyPeasyExamContext context, IWebHostEnvironment environment, ICacheService cacheService)
         {
             _context = context;
-            _environment = environment; 
+            _environment = environment;
             _cacheService = cacheService;
         }
 
@@ -48,9 +47,10 @@ namespace EasyPeasyExam.Controllers
 
         // GET: api/Exams/5
         [HttpGet("{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Exam>> GetExam(int id)
         {
-            var cacheExam = _cacheService.GetData < IEnumerable < Exam >> ("exams");
+            var cacheExam = _cacheService.GetData<IEnumerable<Exam>>("exams");
             if (cacheExam != null && cacheExam.Count() > 0)
             {
                 return Ok(cacheExam);
@@ -70,7 +70,7 @@ namespace EasyPeasyExam.Controllers
             var expiryTime = DateTimeOffset.Now.AddMinutes(1);
             _cacheService.SetData<IEnumerable<Exam>>("exams", new List<Exam> { exam }, expiryTime);
             if (exam == null)
-            {
+            {   
                 return NotFound();
             }
             return Ok(exam);
