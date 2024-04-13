@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EasyPeasyExam.Models;
 using Microsoft.Extensions.Hosting;
+using EasyPeasyExam.Services;
 
 namespace EasyPeasyExam.Controllers
 {
@@ -16,11 +17,12 @@ namespace EasyPeasyExam.Controllers
     {
         private readonly EasyPeasyExamContext _context;
         private readonly IWebHostEnvironment _environment;
-
-        public ExamsController(EasyPeasyExamContext context, IWebHostEnvironment environment)
+        private readonly ICacheService _cacheService;
+        public ExamsController(EasyPeasyExamContext context, IWebHostEnvironment environment, ICacheService cacheService)
         {
             _context = context;
-            _environment = environment; 
+            _environment = environment;
+            _cacheService = cacheService;
         }
 
         // GET: api/Exams
@@ -47,10 +49,11 @@ namespace EasyPeasyExam.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Exam>> GetExam(int id)
         {
-          if (_context.Exams == null)
-          {
-              return NotFound();
-          }
+            var cacheExam = _cacheService.GetData<IEnumerable<Exam>>("exams");
+            if (cacheExam != null && cacheExam.Count() > 0)
+            {
+                return Ok(cacheExam);
+            }
             var exam = await _context.Exams
                 .Where(c => c.ExamId == id)
                 .Select(c => new Exam()
@@ -63,11 +66,13 @@ namespace EasyPeasyExam.Controllers
                     ImageSrc = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, c.ExamImage)
                 })
                 .FirstOrDefaultAsync();
+            var expiryTime = DateTimeOffset.Now.AddMinutes(1);
+            _cacheService.SetData<IEnumerable<Exam>>("exams", new List<Exam> { exam }, expiryTime);
             if (exam == null)
             {
                 return NotFound();
             }
-            return exam;
+            return Ok(exam);
         }
         [HttpGet]
         [Route("GetExamByInstructorId/{InstructorId}")]
