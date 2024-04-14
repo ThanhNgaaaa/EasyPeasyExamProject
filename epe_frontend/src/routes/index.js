@@ -52,6 +52,8 @@ import updateCourseStudent from "../Layout/StudentLayout/UpdateCourse/UpdateCour
 import quizDetailStudent from "../Layout/StudentLayout/QuizDetail/QuizDetail";
 import createExamStudent from "../Layout/StudentLayout/CreateExam/CreateExam";
 import UpdateQuizStudent from "../Layout/StudentLayout/UpdateQuizz/UpdateQuiz";
+import TestExamList from "../pages/TestExam/TestExamList";
+import TestExam from "../pages/TestExam/TestExam";
 //Public Routes
 const publicRoutes = [
   {
@@ -273,6 +275,15 @@ const publicRoutes = [
   },{
     path: routesConfig.updateQuestionStudent + "/:QuestionId",
     component: UpdateQuizStudent,
+    layout: null,
+  },{
+    path: routesConfig.testExamList,
+    component: TestExamList,
+    layout: null,
+  },
+  {
+    path: routesConfig.testExam + "/:ExamId",
+    component: TestExam,
     layout: null,
   },
 ];

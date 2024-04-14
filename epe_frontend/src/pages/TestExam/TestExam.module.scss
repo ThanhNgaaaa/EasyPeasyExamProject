@@ -1,0 +1,120 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.menu-top {
+  padding-top: 0px;
+  width: 100%;
+  position: fixed;
+  height: 80px;
+  background-color: #fff;
+  z-index: 9999;
+  .menu-container {
+    box-sizing: border-box;
+    outline: none;
+    background-color: #fffcfc;
+    box-shadow: 0px 2px 4.9px 0.1px rgba(0, 0, 0, 0.17);
+    font-size: 18px;
+    padding: 12px 0;
+    line-height: 24px;
+    border-bottom: 1px solid #e5ebef;
+    display: flex;
+    justify-content: space-around;
+    .menu-time {
+      min-width: 100px;
+      text-align: center;
+    }
+  }
+  .menu-back {
+    cursor: pointer;
+    color: var(--primary-color);
+    text-decoration: none;
+    position: relative;
+    .menu-back_icon {
+      position: absolute;
+      top: 3px;
+      left: -22px;
+    }
+  }
+
+  .btn-submit {
+    cursor: pointer;
+    padding: 5px 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 12px;
+    margin: 0 10px;
+    color: white;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+}
+.content {
+  position: relative;
+  padding: 40px 100px;
+  .test-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px 0 30px;
+    color: var(--primary-color);
+    font-weight: 400;
+  }
+  .test-page {
+    box-shadow: 0px 2px 4.9px 2px rgba(0, 0, 0, 0.17);
+    border-radius: 10px;
+    padding: 40px 80px;
+  }
+}
+.test-question-wrapper {
+  margin: 20px;
+  p {
+    margin-bottom: 10px;
+  }
+}
+.btn-restart {
+  padding: 0px;
+  // background-color: #00ffca;
+  background-image: linear-gradient(rgb(163, 249, 152), rgb(129, 254, 183));
+  width: 130px;
+  height: 38px;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    background-image: linear-gradient(rgb(153, 246, 141), rgb(47, 252, 136));
+  }
+}
+.btn-back {
+  color: #fff;
+  padding: 0px;
+  background-image: linear-gradient(rgb(202, 186, 253), rgb(158, 129, 254));
+  width: 130px;
+  height: 38px;
+  border-radius: 6px;
+  cursor: pointer;
+  &:hover {
+    background-image: linear-gradient(rgb(189, 171, 248), rgb(128, 90, 252));
+  }
+}
+.quiz-result-actions {
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.test-answers-content {
+  margin-left: 10px;
+  label,
+  input[type="radio"] {
+    cursor: pointer;
+  }
+  label {
+    margin-left: 20px;
+  }
+  input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+}

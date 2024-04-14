@@ -33,6 +33,8 @@ const routes = {
   quizGame: "/quizExam",
   quizResult: "/quizResult",
   updateQuestion: "/updateQuestion",
+  testExamList:"/testExamList",
+  testExam:"/testExam",
 
   courseStudent: "/courseStudent",
   createCourseStudent: "/createCourseStudent",
