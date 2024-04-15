@@ -20,6 +20,9 @@ const TestExam = () => {
   const [isQuizFinished, setIsQuizFinished] = useState(false);
   const [timeLeft, setTimeLeft] = useState(1);
   const [loading, setLoading] = useState(true);
+
+  //
+  const [submitResult, setSubmitResult] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     window.addEventListener("beforeunload", alertUser);
@@ -78,6 +81,14 @@ const TestExam = () => {
     setIsQuizFinished(false);
     setTimeLeft(exam.Duration);
   };
+  const handleResultSubmit = () => {
+    setSubmitResult(true);
+  };
+  useEffect(() => {
+    if (isQuizFinished && !submitResult) {
+      handleResultSubmit();
+    }
+  }, [isQuizFinished, submitResult]);
   if (isQuizFinished) {
     return (
       <div className={cx("quiz-container")}>
@@ -85,6 +96,8 @@ const TestExam = () => {
           numCorrectAnswers={numCorrectAnswers}
           numIncorrectAnswers={numIncorrectAnswers}
           totalQuestions={question.length}
+          submitResult={submitResult}
+          onResultSubmit={handleResultSubmit}
         />
         <div className={cx("quiz-result-actions")}>
           <button className={cx("btn-restart")} onClick={handleRestartClick}>
@@ -117,9 +130,9 @@ const TestExam = () => {
   const handleFinishClick = () => {
     if (window.confirm("Do you want to submit?")) {
       setIsQuizFinished(true);
-    }  
+    }
   };
-  
+
   return (
     <div className={cx("wrapper")}>
       {loading ? (
