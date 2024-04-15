@@ -31,8 +31,8 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={cx("navbar-list-item")}>
-          <Link to={routesConfig.contact}>
-            Contact
+        <Link to={routesConfig.testExamList}>
+            Test
             {/* <FiChevronDown className={cx("icon_chevrondown")} /> */}
           </Link>
         </li>

@@ -47,7 +47,7 @@ namespace EasyPeasyExam.Controllers
 
         // GET: api/Exams/5
         [HttpGet("{id}")]
-        [HttpGet("{id}")]
+
         public async Task<ActionResult<Exam>> GetExam(int id)
         {
             var cacheExam = _cacheService.GetData<IEnumerable<Exam>>("exams");

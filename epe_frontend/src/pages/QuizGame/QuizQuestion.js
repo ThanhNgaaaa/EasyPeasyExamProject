@@ -15,10 +15,6 @@ const QuizQuestion = ({ question, onAnswered, selectedAnswers }) => {
   const [correctSound, setCorrectSound] = useState(null);
   const [incorrectSound, setIncorrectSound] = useState(null);
   const [answered, setAnswered] = useState(false);
-  useEffect(() => {
-    setCorrectSound(new Audio(correctAudio));
-    setIncorrectSound(new Audio(inCorrectSound));
-  }, []);
   const handleAnswerChange = (event) => {
     const choiceContent = event.target.value;
     setSelectedAnswer(choiceContent);
